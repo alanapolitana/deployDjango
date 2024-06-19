@@ -93,7 +93,7 @@ WSGI_APPLICATION = 'universidad.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 
-
+""" 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -107,7 +107,22 @@ DATABASES = {
         }
     }
 }
+ """
+import os
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.getenv('MYSQLDATABASE'),
+        'USER': os.getenv('MYSQLUSER'),
+        'PASSWORD': os.getenv('MYSQLPASSWORD'),
+        'HOST': os.getenv('MYSQLHOST'),
+        'PORT': os.getenv('MYSQLPORT'),
+        'OPTIONS': {
+            'sql_mode': 'traditional',
+        }
+    }
+}
 
 AUTH_USER_MODEL = 'MyComicApp.User'
 

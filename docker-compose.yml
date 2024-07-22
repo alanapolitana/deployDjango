@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  web:
+    image: planetsuperheroes-web
+    command: gunicorn universidad.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - .:/planetsuperheroes
+      - static_volume:/planetsuperheroes/staticfiles  # Montar el volumen de archivos estáticos en el contenedor web
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=universidad.settings
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - static_volume:/planetsuperheroes/staticfiles  # Asegúrate de montar el volumen correctamente
+    ports:
+      - "80:80"
+    depends_on:
+      - web
+
+volumes:
+  static_volume:

@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth.models import Group  # Agrega esta línea
+from django.contrib.auth.models import Group 
 
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, role=None, **extra_fields):
@@ -48,11 +48,14 @@ class User(AbstractBaseUser, PermissionsMixin):
     def user_orders(self):
         return Order.objects.filter(id_user=self)
     
+    class Meta:
+        db_table = 'mycomicapp_user' 
     
+
 class Role(models.Model):
     id_role = models.AutoField(primary_key=True)
     name = models.CharField(max_length=45, blank=False)
-    group = models.OneToOneField(Group, on_delete=models.CASCADE, null=True)
+    group = models.ForeignKey(Group, on_delete=models.SET_NULL, null=True, blank=True)
 
     class Meta:
         db_table = 'roles'

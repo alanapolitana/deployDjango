@@ -1,7 +1,7 @@
-INSERT INTO `categories` ( name) VALUES (  'Marvel'), ( 'DC');
+INSERT INTO categories( name) VALUES (  'Marvel'), ( 'DC');
 
 -- Insertar valores en products
-INSERT INTO `products` (name, description, price, discount, stock, image, pages, format, weight, isbn, category_id, calification)
+INSERT INTO products (name, description, price, discount, stock, image, pages, format, weight, isbn, category_id, calification)
 VALUES 
 ('Capitan America',
  'El primer año de la revolucionaria etapa que devolvió toda su gloria al Centinela de la Libertad. Después de que fuera dado por muerto por los suyos, el Capitán América ha regresado. Sin su escudo y sin sus amigos, tendrá que afrontar la lucha contra Hydra, al tiempo que aparece ante sus ojos el plan de los Skrull para dominar el planeta. El guionista Mark Waid, junto a los genios del dibujo Ron Garney (Lobezno: Arma X) y Andy Kubert (Marvel 1602), comanda esta brillante etapa del Capitán América. Contiene la traducción de los comic books originales Heroes Return: Captain America números 1 al 12 publicados en USA por Marvel Comics. Volumen único.',
@@ -162,7 +162,7 @@ VALUES
 
 
 -- Insertar roles
-INSERT INTO `roles` (name)
+INSERT INTO roles (name)
 VALUES
 ('User'),
 ('Vendedor'),
@@ -170,7 +170,7 @@ VALUES
 
 
 
-INSERT INTO `mycomicapp_user` (email, first_name, last_name, password, address, phone, image, date_joined, is_active, is_staff, is_superuser, role_id) 
+INSERT INTO MyComicApp_user (email, first_name, last_name, password, address, phone, image, date_joined, is_active, is_staff, is_superuser, role_id) 
 VALUES 
 
 
@@ -188,7 +188,7 @@ VALUES
 ('developers-superheroes@gmail.com', 'Develop', 'Team','pbkdf2_sha256$600000$TM6SUusGx9g4tG3ixjFULr$2D2mz/i5G1/1mEx4bhuIm6NKwPqmg3ZafjD0KD9SLFA=', 'localhost', 123456789, 'michael_brown.jpg', '2024-05-23 16:00:04', true, true, true, 3);
 
 
-INSERT INTO `orders` (user_id, state, order_date, payment_method, shipping_method, payment_status, total_amount)
+INSERT INTO orders (user_id, state, order_date, payment_method, shipping_method, payment_status, total_amount)
 VALUES
 (1, 'En Proceso', '2023-09-25', 'Tarjeta de credito', 'Envio expres', 'Aprobado', 200.00),
 (2, 'Cancelado', '2023-09-26', 'PayPal', 'Envio estandar', 'Cancelado', 150.00),
@@ -204,7 +204,7 @@ VALUES
 (5, 'Completado', '2023-09-29', 'Tarjeta de credito', 'Envio estandar', 'Aprobado', 180.00),
 (6, 'Cancelado', '2023-09-30', 'PayPal', 'Envio estandar', 'Cancelado', 9800);
 
-INSERT INTO `order_items` (quantity, product_id, order_id)
+INSERT INTO order_items (quantity, product_id, order_id)
 VALUES
 (3, 1, 1),
 (2, 2, 2),

@@ -48,7 +48,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     def user_orders(self):
         return Order.objects.filter(id_user=self)
     
-     
+    
+    class Meta:
+        db_table = 'mycomicapp_user'
 
 class Role(models.Model):
     id_role = models.AutoField(primary_key=True)

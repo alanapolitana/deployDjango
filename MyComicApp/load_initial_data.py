@@ -13,7 +13,7 @@ def load_data_script(sender, **kwargs):
         return
 
     # Lista de tablas afectadas por el script
-    affected_tables = ['categories', 'products', 'roles', 'MyComicApp_user', 'orders', 'order_items']
+    affected_tables = ['categories', 'products', 'roles', 'mycomicapp_user', 'orders', 'order_items']
 
     # Verificar y cargar datos en cada tabla individualmente
     with connection.cursor() as cursor:

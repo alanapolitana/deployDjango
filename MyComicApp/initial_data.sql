@@ -170,7 +170,7 @@ VALUES
 
 
 
-INSERT INTO MyComicApp_user (email, first_name, last_name, password, address, phone, image, date_joined, is_active, is_staff, is_superuser, role_id) 
+INSERT INTO mycomicapp_user (email, first_name, last_name, password, address, phone, image, date_joined, is_active, is_staff, is_superuser, role_id) 
 VALUES 
 
 

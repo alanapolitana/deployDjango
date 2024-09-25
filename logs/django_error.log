@@ -1447,3 +1447,6 @@ LINE 1: ...."is_superuser", "mycomicapp_user"."role_id" FROM "mycomicap...
 [2024-09-25 13:49:50 +0000] [1] [INFO] Listening at: http://0.0.0.0:8000 (1)
 [2024-09-25 13:49:50 +0000] [1] [INFO] Using worker: sync
 [2024-09-25 13:49:50 +0000] [7] [INFO] Booting worker with pid: 7
+[2024-09-25 14:09:50 +0000] [1] [INFO] Handling signal: term
+[2024-09-25 14:09:50 +0000] [7] [INFO] Worker exiting (pid: 7)
+[2024-09-25 14:09:51 +0000] [1] [INFO] Shutting down: Master

@@ -16,6 +16,8 @@ RUN mkdir -p /planetsuperheroes/logs
 # Instala las dependencias del proyecto
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Comando para recopilar archivos estáticos
+RUN python manage.py collectstatic --noinput
 # Instala psycopg2-binary
 RUN pip install psycopg2-binary
 

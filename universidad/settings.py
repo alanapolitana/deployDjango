@@ -23,26 +23,6 @@ LOGGING = {
     'disable_existing_loggers': False,
     'handlers': {
         'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': '/planetsuperheroes/logs/django_error.log',
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['file'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
-    },
-}
-
-# Configura el logging
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'file': {
             'level': 'ERROR',
             'class': 'logging.FileHandler',
             'filename': os.path.join(BASE_DIR, 'logs/django_error.log'),
@@ -56,6 +36,7 @@ LOGGING = {
         },
     },
 }
+
 
 
 # Application definition

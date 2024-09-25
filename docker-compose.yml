@@ -3,8 +3,7 @@ version: '3.8'
 services:
   web:
     build: .
-    command: >
-      sh -c "python manage.py migrate && python manage.py flush --noinput && gunicorn universidad.wsgi:application --bind 0.0.0.0:8000"
+    command: gunicorn universidad.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - .:/planetsuperheroes
       - static_volume:/planetsuperheroes/staticfiles
@@ -47,3 +46,5 @@ networks:
 volumes:
   static_volume:
   postgres_data:
+
+

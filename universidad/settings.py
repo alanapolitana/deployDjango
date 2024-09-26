@@ -2,6 +2,8 @@ import os
 from datetime import timedelta
 from pathlib import Path
 from dotenv import load_dotenv
+import dj_database_url
+
 
 load_dotenv()
 
@@ -92,6 +94,7 @@ TEMPLATES = [
 # Database
 DATABASES = {
     'default': {
+        'default': dj_database_url.config(default=os.getenv('DATABASE_URL')),
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv('POSTGRES_DB'),
         'USER': os.getenv('POSTGRES_USER'),

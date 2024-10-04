@@ -16,8 +16,14 @@ SECRET_KEY = 'django-insecure-0e*4)xp%lp!2lc37aujo38n-14a@4wo81qqjsi-!atniye0jd$
 
 
 ALLOWED_HOSTS = ['*']
+
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+if not DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    
+    
 AUTH_USER_MODEL = 'MyComicApp.User'
 
 LOGGING = {
@@ -69,6 +75,8 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     # 'rest_framework_simplejwt.authentication.JWTAuthentication',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
 ]
 CORS_ORIGIN_WHITELIST = ['http://localhost:4200']
 CORS_ALLOWED_ORIGINS = ['http://localhost:4200',]

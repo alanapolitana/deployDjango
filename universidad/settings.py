@@ -1,3 +1,4 @@
+from logging import DEBUG
 import os
 from datetime import timedelta
 from pathlib import Path
@@ -18,10 +19,12 @@ SECRET_KEY = 'django-insecure-0e*4)xp%lp!2lc37aujo38n-14a@4wo81qqjsi-!atniye0jd$
 ALLOWED_HOSTS = ['*']
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    # Solo en producción
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
     
     
 AUTH_USER_MODEL = 'MyComicApp.User'

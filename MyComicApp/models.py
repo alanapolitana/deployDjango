@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth.models import Group 
+from django.contrib.auth.models import Group  # Agrega esta línea
 
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, role=None, **extra_fields):
@@ -25,11 +25,12 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     id = models.AutoField(primary_key=True) 
+    username = models.CharField(max_length=30, blank=False, null=True) 
     email = models.EmailField(unique=True)
-    first_name = models.CharField(max_length=30, blank=False)
-    last_name = models.CharField(max_length=30, blank=False)
-    address = models.CharField(max_length=255, default='', blank=False)
-    phone = models.CharField(max_length=20, default='', blank=False)
+    first_name = models.CharField(max_length=30, blank=False, null=True)
+    last_name = models.CharField(max_length=30, blank=False, null=True)
+    address = models.CharField(max_length=255, default='', blank=False, null=True)
+    phone = models.CharField(max_length=20, default='', blank=False, null=True)
     image = models.ImageField(upload_to='images/', blank=True, null=True)
     date_joined = models.DateTimeField(default=timezone.now)
     is_staff = models.BooleanField(default=False)
@@ -49,13 +50,10 @@ class User(AbstractBaseUser, PermissionsMixin):
         return Order.objects.filter(id_user=self)
     
     
-    class Meta:
-        db_table = 'mycomicapp_user'
-
 class Role(models.Model):
     id_role = models.AutoField(primary_key=True)
     name = models.CharField(max_length=45, blank=False)
-    group = models.ForeignKey(Group, on_delete=models.SET_NULL, null=True, blank=True)
+    group = models.OneToOneField(Group, on_delete=models.CASCADE, null=True)
 
     class Meta:
         db_table = 'roles'
@@ -133,3 +131,5 @@ class OrderItem(models.Model):
         
     def __str__(self):
         return f'{self.quantity} of {self.product.name} in Order {self.order.id_order}'
+    
+    

@@ -83,7 +83,7 @@ class UpdateUserView(APIView):
     def get_object(self):
         return self.request.user
     
-    def put(self, request, *args, **kwargs):
+    def patch(self, request, *args, **kwargs):
         user = self.get_object()
         serializer = self.serializer_class(user, data=request.data)
         if serializer.is_valid():
